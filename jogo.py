@@ -1,4 +1,7 @@
 from inicializa import inicializa
+import base_palavras
+from filtra import filtra
+from posicao_correta import inidica_posicao
 
 print("*"*23)
 print("-"*23)
@@ -12,3 +15,19 @@ print(" - A cada tentativa, a palavra testada terá suas letras coloridas confor
 print("  ➔ \033[1;49;36m Azul \033[m : a letra está na posição correta;")
 print("  ➔ \033[1;49;33m Amarelo \033[m : a letra está na posição correta;")
 print("  ➔ \033[2;49;39m Cinza \033[m : a letra está na posição correta;")
+
+numerodeletras = int(input("Diga quantas letras você quer, entre 4 e 7: "))
+# listatermos -> cria uma lista com o número de letras do mesmo tamanho das palavras
+listatermos = filtra(base_palavras.PALAVRAS, numerodeletras)
+
+dicinicializa = inicializa(listatermos)
+print(dicinicializa)
+
+
+
+
+
+
+
+
+
