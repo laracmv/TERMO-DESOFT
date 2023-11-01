@@ -1,7 +1,9 @@
-def filtra(listapalavra, numeroletras):
+import base_palavras
+
+def filtra(base_palavras, numeroletras):
     # listapalavra -> recebe palavras nº de letras e tamanhos diversos
     listafiltro = []
-    for palavra in listapalavra:
+    for palavra in base_palavras:
         if len(palavra) == numeroletras:
             menor = palavra.lower()
             # menor - formata palavras em minúsculo
