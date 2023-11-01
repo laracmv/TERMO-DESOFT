@@ -14,5 +14,5 @@ def inidica_posicao(sorteada, especulada):
             termo.append(1) #tem a letra na word
         else:
             termo.append(2) #não tem na word
-
     return termo
+
