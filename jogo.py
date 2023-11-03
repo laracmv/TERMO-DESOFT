@@ -15,7 +15,6 @@ print("  ➔ \033[1;49;36m Azul \033[m : A letra está na posição correta;")
 print("  ➔ \033[1;49;33m Amarelo \033[m : Tem a letra na palavra mas, não está na posição correta;")
 print("  ➔ \033[2;49;39m Cinza \033[m : A letra não existe nesta palavra;")
 print("Caso não queria continuar a jogar digite: \033[0;31;40m cansei \033[m")
-print('Caso contrário digite: \033[0;31;40m S \033[m para continuar o jogo.\n ')
 print("\nBora começar o jogo !!\n")
 
 #definir nossos paramêtros
@@ -43,17 +42,17 @@ while tentativas < 6:
 
     #caso cansar do jogo
     if palpite.lower() == "cansei":
-        print('Mas já cansou? Até mais então.')
+        print('\n>>> Mas já cansou? Até mais, volte sempre.')
         break
 
     #se o tamanho do palpite for diferente do numero de letras permitido
     if len(palpite) != numerodeletras: 
-        print('Número de letras inválido, a palavra precisa conter 5 letras.')
+        print('\nNúmero de letras inválido, a palavra precisa conter 5 letras.')
         continue
 
     #se palpite for igual a sorteada, ganha o jogo.
     if palpite == dicinicializa["sorteada"]:
-        print('\nVocê acertou, parabéns !!\n')
+        print('\n>>> Você acertou, parabéns !!\n')
         break
 
     #posição das letras e cores.
@@ -74,15 +73,20 @@ while tentativas < 6:
     print(a)
 
     tentativas +=1
+    print(f'\nFaltam {6-tentativas} tentativas')
 
-    #se tentativas maior que o esperado, perde o jogo.
+    #quando acabar as tentativas
     if tentativas >= 6 and palpite != dicinicializa["sorteada"]:
-        print(f'Você perdeu, a palavra sorteada era \033[1;49;36m{dicinicializa["sorteada"]}\033[m')
+        print(f'\n>>> Você perdeu, a palavra sorteada era: \033[1;49;36m{dicinicializa["sorteada"]}\033[m')
 
-#continuar = input('Deseja continuar o jogo (s/n): ')
-#if continuar == 's':
-
-
+#essa parte do continuar que eu não sei o que fazer nessa merda
+    if tentativas >=6:
+        continuar = input('\nDeseja continuar a jogar s/n: ')
+        if continuar == 's':
+            continue
+        else:
+            print('>>> Até logo, volte sempre.')
+            break
 
 
 
