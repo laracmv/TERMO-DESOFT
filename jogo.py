@@ -49,7 +49,14 @@ while jogardenovo != "N" and jogardenovo != "n":
         #padroniza o palpite em minúsculo
         palpite = palpite.lower()
         print(dicinicializa["especuladas"])
-        if palpite in dicinicializa["especuladas"]:
+        #caso cansar do jogo
+        if palpite == "cansei":
+            palpite = input("Não seja um mal perdedor, você tem certeza? [cansei mesmo/ N]: ")
+            if palpite == "cansei mesmo":
+                print('\n>>> Então tá bom, volte sempre.')
+        
+
+        elif palpite in dicinicializa["especuladas"]:
             print("Essa palavra já foi dita, diga outra! ")
         
         #se o tamanho do palpite for diferente do numero de letras permitido
@@ -59,11 +66,7 @@ while jogardenovo != "N" and jogardenovo != "n":
         elif palpite not in base_palavras.PALAVRAS:
             print("Palavra desconhecida, tente outra")
 
-        #caso cansar do jogo
-        elif palpite == "cansei":
-            palpite = input("Não seja um mal perdedor, você tem certeza? [cansei mesmo/ N]: ")
-            if palpite == "cansei mesmo":
-                print('\n>>> Então tá bom, volte sempre.')
+
 
         else:
             numero_tentativas += 1
