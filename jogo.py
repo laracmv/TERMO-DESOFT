@@ -28,7 +28,14 @@ while jogardenovo != "N" and jogardenovo != "n":
 
     #5 letras no total
     numerodeletras = int(input(("Digite quantas letras você quer jogar, pode ser 4, 5, 6 ou 7: ")))
-
+    
+    #excessão caso o usuario digite o valor errado
+    opcoesnumerodeletras = [4,5,6,7]
+    if numerodeletras not in opcoesnumerodeletras:
+        while numerodeletras not in opcoesnumerodeletras:
+            print("Valor incorreto, digite novamente")
+            numerodeletras = int(input(("Digite quantas letras você quer jogar, pode ser 4, 5, 6 ou 7: ")))
+            
     #lista de palavras com 5 letras
     listatermos = filtra(base_palavras.PALAVRAS, numerodeletras)
 
