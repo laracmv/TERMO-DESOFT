@@ -18,6 +18,11 @@ print("   ➔ \033[1;49;33m Amarelo \033[m : Tem a letra na palavra mas, não es
 print("   ➔ \033[2;49;39m Cinza \033[m : A letra não existe nesta palavra;")
 print(" - Os acentos são ignorados.")
 print(" - As palavras podem possuir letras repetidas.")
+print('A cada palavra acertada, você pontua de acordo com o n° de letras:')
+print('   ➔ 4 letras valem  \033[1;49;33m10 pontos. \033[m ')
+print('   ➔ 5 letras valem  \033[1;49;33m20 pontos. \033[m ')
+print('   ➔ 6 letras valem  \033[1;49;33m30 pontos. \033[m ')
+print('   ➔ 7 letras valem  \033[1;49;33m40 pontos. \033[m ')
 print("Caso não queria continuar a jogar digite: \033[1;49;31m cansei \033[m")
 print("\nBora começar o jogo !!\n")
 
@@ -30,6 +35,7 @@ while jogardenovo != "N" and jogardenovo != "n":
 
     #5 letras no total
     numerodeletras = int(input(("\nDigite quantas letras você quer jogar, pode ser 4, 5, 6 ou 7: ")))
+    print('\n')
     
     #excessão caso o usuario digite o valor errado
     opcoesnumerodeletras = [4,5,6,7]
@@ -43,7 +49,7 @@ while jogardenovo != "N" and jogardenovo != "n":
 
     #dicionario com nº de palavras, palavra sorteada, especulacoes e nº de tentativas
     dicinicializa = inicializa(listatermos)
-    print(dicinicializa) #para mostrar a palavra sorteada, só de teste
+    
 
     #delimitar as tentativas
     tentativas = dicinicializa["tentativas"]
@@ -57,10 +63,11 @@ while jogardenovo != "N" and jogardenovo != "n":
     listadepalpites = []
     while (tentativas > 0 and tentativas <= dicinicializa["tentativas"]) and  (palpite != dicinicializa["sorteada"]) and (palpite != "cansei") and (palpite != "cansei mesmo"):
         palpite = input('Digite seu palpite: ')
+        print('\n')
 
         #padroniza o palpite em minúsculo
         palpite = palpite.lower()
-        print(dicinicializa["especuladas"])
+       
         #caso cansar do jogo
         if palpite == "cansei":
             palpite = input("Não seja um mal perdedor, você tem certeza? [cansei mesmo/ N]: ")
@@ -75,7 +82,7 @@ while jogardenovo != "N" and jogardenovo != "n":
             print(f"\nNúmero de letras inválido, a palavra precisa conter {dicinicializa['n']} letras.")
         
         elif palpite not in base_palavras.PALAVRAS:
-            print("Palavra desconhecida, tente outra")
+            print("Palavra desconhecida, tente outra\n")
 
         else:
             numero_tentativas += 1
@@ -100,7 +107,6 @@ while jogardenovo != "N" and jogardenovo != "n":
                 #adiciona os palpites a uma lista dentro de dicinicializa["especuladas"]
                 dicinicializa["especuladas"].append(palpite)
                 listaposicao = inidica_posicao(dicinicializa["sorteada"], palpite)
-                print(listaposicao)
 
                 i = 0
                 linhaatual = []
@@ -121,13 +127,13 @@ while jogardenovo != "N" and jogardenovo != "n":
                 f+=1
                 tentativas = dicinicializa["tentativas"] - f
                 if tentativas == 0:
-                    print(f'\n>>> Você perdeu, a palavra sorteada era: \033[1;49;36m{dicinicializa["sorteada"]}\033[m')
+                    print(f'\n>>> Você perdeu, a palavra sorteada era: \033[1;49;36m{dicinicializa["sorteada"]}\033[m\n')
                 else: 
-                    print(f'\nFaltam {tentativas} tentativas')
+                    print(f'\nFaltam {tentativas} tentativas\n')
     
     jogardenovo = input("Gostaria de jogar de novo? [S/N]: ")
     if jogardenovo == 'n' and 'N':
-        print(f'\nSua pontuação total foi de \033[1;49;33m{pontos}\033[m pontos.')
+        print(f'\nSua pontuação total foi de \033[1;49;33m{pontos}\033[m pontos.\n')
       
 print("Até a próxima rodada!\n")
 
