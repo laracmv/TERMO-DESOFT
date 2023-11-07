@@ -23,18 +23,19 @@ print("\nBora começar o jogo !!\n")
 
 
 jogardenovo = ""
+pontos = 0
 #Loop para escolher se que ou não jogar de nv
 while jogardenovo != "N" and jogardenovo != "n":
 
     #5 letras no total
-    numerodeletras = int(input(("Digite quantas letras você quer jogar, pode ser 4, 5, 6 ou 7: ")))
+    numerodeletras = int(input(("\nDigite quantas letras você quer jogar, pode ser 4, 5, 6 ou 7: ")))
     
     #excessão caso o usuario digite o valor errado
     opcoesnumerodeletras = [4,5,6,7]
     if numerodeletras not in opcoesnumerodeletras:
         while numerodeletras not in opcoesnumerodeletras:
             print("Valor incorreto, digite novamente")
-            numerodeletras = int(input(("Digite quantas letras você quer jogar, pode ser 4, 5, 6 ou 7: ")))
+            numerodeletras = int(input(("\nDigite quantas letras você quer jogar, pode ser 4, 5, 6 ou 7: ")))
             
     #lista de palavras com 5 letras
     listatermos = filtra(base_palavras.PALAVRAS, numerodeletras)
@@ -77,9 +78,23 @@ while jogardenovo != "N" and jogardenovo != "n":
 
         else:
             numero_tentativas += 1
-            #se palpite for igual a sorteada, ganha o jogo.
-            if palpite == dicinicializa["sorteada"]:
-                print(f"\n>>> Você acertou depois de {numero_tentativas} tentativa, parabéns !!!\n")
+            #se palpite for igual a sorteada, aumenta a pontuação de acordo com o n° de letras.
+            if palpite == dicinicializa["sorteada"] and numerodeletras == 4:
+                base = 10
+                pontos += base
+                print(f"\n>>> Você acertou depois de {numero_tentativas} tentativa, parabéns !!!\nVocê possui \033[1;49;33m{pontos}\033[m pontos.\n")
+            elif palpite == dicinicializa["sorteada"] and numerodeletras == 5:
+                base = 20
+                pontos += base
+                print(f"\n>>> Você acertou depois de {numero_tentativas} tentativa, parabéns !!!\nVocê possui \033[1;49;33m{pontos}\033[m pontos.\n")
+            elif palpite == dicinicializa["sorteada"] and numerodeletras == 6:
+                base = 30
+                pontos+= base
+                print(f"\n>>> Você acertou depois de {numero_tentativas} tentativa, parabéns !!!\nVocê possui \033[1;49;33m{pontos}\033[m pontos.\n")
+            elif palpite == dicinicializa["sorteada"] and numerodeletras == 7:
+                base = 40
+                pontos += base
+                print(f"\n>>> Você acertou depois de {numero_tentativas} tentativa, parabéns !!!\nVocê possui \033[1;49;33m{pontos}\033[m pontos.\n")
             else: 
                 #adiciona os palpites a uma lista dentro de dicinicializa["especuladas"]
                 dicinicializa["especuladas"].append(palpite)
@@ -113,8 +128,10 @@ while jogardenovo != "N" and jogardenovo != "n":
                     print(f'\nFaltam {tentativas} tentativas')
     
     jogardenovo = input("Gostaria de jogar de novo? [S/N]: ")
-       
-print("Poxa :( até a próxima! ")
+    if jogardenovo == 'n' and 'N':
+        print(f'\nSua pontuação total foi de \033[1;49;33m{pontos}\033[m pontos.')
+      
+print("Até a próxima rodada!\n")
 
 
 
