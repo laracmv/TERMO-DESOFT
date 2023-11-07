@@ -43,6 +43,9 @@ while jogardenovo != "N" and jogardenovo != "n":
     f = 0
     # Numero tentativas -> numero de vezes que o jogador tentou
     numero_tentativas = 0
+    
+    #matrizlinha -> usado na formatação dos palpites
+    matrizlinha = []
     while (tentativas > 0 and tentativas <= dicinicializa["tentativas"]) and  (palpite != dicinicializa["sorteada"]) and (palpite != "cansei") and (palpite != "cansei mesmo"):
         palpite = input('Digite seu palpite: ')
 
@@ -54,7 +57,6 @@ while jogardenovo != "N" and jogardenovo != "n":
             palpite = input("Não seja um mal perdedor, você tem certeza? [cansei mesmo/ N]: ")
             if palpite == "cansei mesmo":
                 print('\n>>> Então tá bom, volte sempre.')
-        
 
         elif palpite in dicinicializa["especuladas"]:
             print("Essa palavra já foi dita, diga outra! ")
@@ -65,8 +67,6 @@ while jogardenovo != "N" and jogardenovo != "n":
         
         elif palpite not in base_palavras.PALAVRAS:
             print("Palavra desconhecida, tente outra")
-
-
 
         else:
             numero_tentativas += 1
@@ -81,15 +81,21 @@ while jogardenovo != "N" and jogardenovo != "n":
 
                 a = ''
                 i = 0
+                linhaatual = []
                 for letra in palpite:
                     if listaposicao[i] == 0:
-                        a+=f"\033[1;49;36m {letra} \033[m"
+                        linhaatual.append(f"\033[1;49;36m {letra} \033[m")
                     elif listaposicao[i] == 1:
-                        a+=f"\033[1;49;33m {letra} \033[m"
+                        linhaatual.append(f"\033[1;49;33m {letra} \033[m")
                     else: 
-                        a+=f"\033[2;49;39m {letra} \033[m"
+                        linhaatual.append(f"\033[2;49;39m {letra} \033[m")
                     i+=1
-                print(a)
+
+                #possibilita que os palpites anteriores aparecam para o usuario
+                matrizlinha.append(linhaatual)
+                for lin in matrizlinha:
+                    print("\n")
+                    print(" ".join(lin))
 
                 # Diminui o numero de tentativas ate chegar em 0
                 f+=1
@@ -102,6 +108,7 @@ while jogardenovo != "N" and jogardenovo != "n":
     jogardenovo = input("Gostaria de jogar de novo? [S/N]: ")
        
 print("Poxa :( até a próxima! ")
+
 
 
 
