@@ -2,6 +2,7 @@ from inicializa import inicializa
 import base_palavras
 from filtra import filtra
 from posicao_correta import inidica_posicao
+from formatacaopalpites import formatapalpite
 
 print("*"*23)
 print("-"*23)
@@ -52,8 +53,8 @@ while jogardenovo != "N" and jogardenovo != "n":
     # Numero tentativas -> numero de vezes que o jogador tentou
     numero_tentativas = 0
     
-    #matrizlinha -> usado na formatação dos palpites
-    matrizlinha = []
+    #listadepalpites -> usado na formatação dos palpites
+    listadepalpites = []
     while (tentativas > 0 and tentativas <= dicinicializa["tentativas"]) and  (palpite != dicinicializa["sorteada"]) and (palpite != "cansei") and (palpite != "cansei mesmo"):
         palpite = input('Digite seu palpite: ')
 
@@ -101,7 +102,6 @@ while jogardenovo != "N" and jogardenovo != "n":
                 listaposicao = inidica_posicao(dicinicializa["sorteada"], palpite)
                 print(listaposicao)
 
-                a = ''
                 i = 0
                 linhaatual = []
                 for letra in palpite:
@@ -114,10 +114,8 @@ while jogardenovo != "N" and jogardenovo != "n":
                     i+=1
 
                 #possibilita que os palpites anteriores aparecam para o usuario
-                matrizlinha.append(linhaatual)
-                for lin in matrizlinha:
-                    print("\n")
-                    print(" ".join(lin))
+                listadepalpites.append(linhaatual)
+                print(formatapalpite(numerodeletras, listadepalpites))
 
                 # Diminui o numero de tentativas ate chegar em 0
                 f+=1
